@@ -4,6 +4,8 @@
  */
 package br.edu.ifnmg.tads.Trabalho01.Classes.InterfaceUsuario;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author aluno
@@ -88,6 +90,8 @@ public class frmLogin extends javax.swing.JFrame {
     private void btnLogarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogarActionPerformed
         frmTelaPrincipal janela = new frmTelaPrincipal();
         janela.setVisible(true);
+        JOptionPane.showMessageDialog(rootPane, "Login efetuado com sucesso!");
+        this.dispose();
         
     }//GEN-LAST:event_btnLogarActionPerformed
 

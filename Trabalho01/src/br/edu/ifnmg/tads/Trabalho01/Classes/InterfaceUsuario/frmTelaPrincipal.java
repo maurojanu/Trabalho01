@@ -39,6 +39,7 @@ public class frmTelaPrincipal extends javax.swing.JFrame {
         jMenuItem7 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Sistema de Vendas ");
 
         jArquivo.setText("Arquivo");
 
@@ -131,11 +132,10 @@ public class frmTelaPrincipal extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-private void btnLogarActionPerformed(java.awt.event.ActionEvent evt) {                                         
-        frmLogin janela = new frmLogin();
-        janela.setVisible(false);
+                                         
         
-    }   
+        
+    
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
 
         frmCadastrarCliente janela =  new frmCadastrarCliente();
