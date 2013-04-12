@@ -48,7 +48,7 @@
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jTabbedPane2" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace pref="14" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="btnSalvar" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
                   <Component id="btnCancelar" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
@@ -210,20 +210,20 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
                               <Component id="lblFixo" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="txtFixoDDD" min="-2" pref="47" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                              <Component id="txtCelularDDD" min="-2" pref="47" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="txtFixo" min="-2" pref="161" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" attributes="0">
                               <Component id="lblCelular" min="-2" pref="33" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="txtCelularDDD" min="-2" pref="47" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="txtCelularDDD1" min="-2" pref="47" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="txtCelular" min="-2" pref="161" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace pref="117" max="32767" attributes="0"/>
+                      <EmptySpace pref="114" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -233,14 +233,14 @@
                       <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="lblCelular" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
-                          <Component id="txtCelularDDD" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
                           <Component id="txtCelular" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+                          <Component id="txtCelularDDD1" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="lblFixo" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
-                          <Component id="txtFixoDDD" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
                           <Component id="txtFixo" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+                          <Component id="txtCelularDDD" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace pref="150" max="32767" attributes="0"/>
                   </Group>
@@ -262,9 +262,9 @@
                 <Property name="text" type="java.lang.String" value="Fixo:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="txtFixoDDD">
-            </Component>
             <Component class="javax.swing.JTextField" name="txtCelular">
+            </Component>
+            <Component class="javax.swing.JTextField" name="txtCelularDDD1">
             </Component>
           </SubComponents>
         </Container>
@@ -419,6 +419,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Cancelar"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCancelarActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnSalvar">
       <Properties>
