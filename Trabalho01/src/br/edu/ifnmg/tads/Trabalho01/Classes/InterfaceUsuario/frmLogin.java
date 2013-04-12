@@ -86,6 +86,8 @@ public class frmLogin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnLogarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogarActionPerformed
+        frmTelaPrincipal janela = new frmTelaPrincipal();
+        janela.setVisible(true);
         
     }//GEN-LAST:event_btnLogarActionPerformed
 
