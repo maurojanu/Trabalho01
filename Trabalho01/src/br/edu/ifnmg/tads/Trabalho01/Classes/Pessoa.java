@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.edu.ifnmg.tads.Trbalho01.Classes;
+package br.edu.ifnmg.tads.Trabalho01.Classes;
 
 import java.util.List;
 import java.util.Objects;
