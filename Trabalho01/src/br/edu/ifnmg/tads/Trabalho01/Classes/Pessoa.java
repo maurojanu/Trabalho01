@@ -27,8 +27,10 @@ public class Pessoa {
         return id;
     }
 
-    public void setId(int id) {
-        if(id > 1){
+    public void setId(int id)throws ErroValidacaoException {
+        if(id < 0){
+          throw new ErroValidacaoException("Id menor que zero");
+        }else{
           this.id = id;
         }
     }
