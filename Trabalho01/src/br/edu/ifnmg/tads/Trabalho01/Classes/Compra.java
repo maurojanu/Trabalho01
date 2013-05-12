@@ -3,7 +3,6 @@
  * and open the template in the editor.
  */
 package br.edu.ifnmg.tads.Trabalho01.Classes;
-import java.util.List;
 import java.util.Objects;
 /**
  *
@@ -13,14 +12,15 @@ public class Compra {
     private int id;
     private double ValorTotal;
     private String Data;
-    private Pagamento TipoPagamento;
-    private List<Produto>ListaCompra;
+    private Produto produtos;
+    private int quantidade;
 
-    public Compra(int id, double ValorTotal, String Data, List<Produto> ListaCompra) {
+    public Compra(int id, double ValorTotal, String Data, Produto produtos, int quantidade) {
         this.id = id;
         this.ValorTotal = ValorTotal;
         this.Data = Data;
-        this.ListaCompra = ListaCompra;
+        this.produtos = produtos;
+        this.quantidade = quantidade;
     }
 
     public int getId() {
@@ -35,8 +35,12 @@ public class Compra {
         return Data;
     }
 
-    public List<Produto> getListaCompra() {
-        return ListaCompra;
+    public Produto getProdutos() {
+        return produtos;
+    }
+
+    public int getQuantidade() {
+        return quantidade;
     }
 
     public void setId(int id) {
@@ -51,17 +55,21 @@ public class Compra {
         this.Data = Data;
     }
 
-    public void setListaCompra(List<Produto> ListaCompra) {
-        this.ListaCompra = ListaCompra;
+    public void setProdutos(Produto produtos) {
+        this.produtos = produtos;
+    }
+
+    public void setQuantidade(int quantidade) {
+        this.quantidade = quantidade;
     }
 
     @Override
     public int hashCode() {
-        int hash = 3;
-        hash = 29 * hash + this.id;
-        hash = 29 * hash + (int) (Double.doubleToLongBits(this.ValorTotal) ^ (Double.doubleToLongBits(this.ValorTotal) >>> 32));
-        hash = 29 * hash + Objects.hashCode(this.Data);
-        hash = 29 * hash + Objects.hashCode(this.ListaCompra);
+        int hash = 7;
+        hash = 83 * hash + this.id;
+        hash = 83 * hash + (int) (Double.doubleToLongBits(this.ValorTotal) ^ (Double.doubleToLongBits(this.ValorTotal) >>> 32));
+        hash = 83 * hash + Objects.hashCode(this.Data);
+        hash = 83 * hash + Objects.hashCode(this.produtos);
         return hash;
     }
 
@@ -83,7 +91,10 @@ public class Compra {
         if (!Objects.equals(this.Data, other.Data)) {
             return false;
         }
-        if (!Objects.equals(this.ListaCompra, other.ListaCompra)) {
+        if (!Objects.equals(this.produtos, other.produtos)) {
+            return false;
+        }
+        if (this.quantidade != other.quantidade) {
             return false;
         }
         return true;
@@ -91,9 +102,8 @@ public class Compra {
 
     @Override
     public String toString() {
-        return "Compra{" + "id=" + id + ", ValorTotal=" + ValorTotal + ", Data=" + Data + ", ListaCompra=" + ListaCompra + '}';
+        return "Compra{" + "id=" + id + ", ValorTotal=" + ValorTotal + ", Data=" + Data + ", produtos=" + produtos + ", quantidade=" + quantidade + '}';
     }
     
-    
-    
+
 }
