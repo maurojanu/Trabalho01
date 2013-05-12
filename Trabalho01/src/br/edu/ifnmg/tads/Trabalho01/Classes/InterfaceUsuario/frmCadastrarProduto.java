@@ -3,18 +3,21 @@
  * and open the template in the editor.
  */
 package br.edu.ifnmg.tads.Trabalho01.Classes.InterfaceUsuario;
-
+import br.edu.ifnmg.tads.Trabalho01.DataAcess.DaoProduto;
+import br.edu.ifnmg.tads.Trabalho01.Classes.Produto;
 import javax.swing.JOptionPane;
 
 /**
  *
- * @author marcelosa
+ * @author Mauro
  */
 public class frmCadastrarProduto extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form frmCadastrarProdutos
      */
+    
+    Produto Produto;
     public frmCadastrarProduto() {
         initComponents();
     }
@@ -190,7 +193,18 @@ public class frmCadastrarProduto extends javax.swing.JInternalFrame {
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
        if (JOptionPane.showConfirmDialog(rootPane, "Deseja realmente Salvar os Dados?")
                 == 0) {
-            JOptionPane.showMessageDialog(rootPane, "Dados salvo com sucesso!");
+           
+          Produto Prod = new Produto();
+          Prod.setNome(txtNome.getText());
+          Prod.setValorCompra(txtValorCompra.getText());
+          Prod.setValorVenda(txtValorVenda.getText());
+          Prod.setQuantidade(txtQuantidade.getText());
+          
+          DaoProduto dao = new DaoProduto();
+          dao.Salvar(Prod);
+                  
+          
+            JOptionPane.showMessageDialog(rootPane, "Produto salvo com sucesso!");
         }
         else {
             JOptionPane.showMessageDialog(rootPane, "Ação cancelada pelo usuário!");

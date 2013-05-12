@@ -11,14 +11,14 @@ import java.util.Objects;
  * @author marcelosa
  */
 public class Produto {
-    private int id;
+    private int Id;
     private String nome;
     private double ValorCompra;
     private double ValorVenda;
-    private int quantidade;
+    private int Quantidade;
 
     public int getId() {
-        return id;
+        return Id;
     }
 
     public String getNome() {
@@ -34,7 +34,7 @@ public class Produto {
     }
 
     public void setId(int id) {
-        this.id = id;
+        this.Id = id;
     }
 
     public void setNome(String nome) {
@@ -52,7 +52,7 @@ public class Produto {
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 29 * hash + this.id;
+        hash = 29 * hash + this.Id;
         hash = 29 * hash + Objects.hashCode(this.nome);
         hash = 29 * hash + (int) (Double.doubleToLongBits(this.ValorCompra) ^ (Double.doubleToLongBits(this.ValorCompra) >>> 32));
         hash = 29 * hash + (int) (Double.doubleToLongBits(this.ValorVenda) ^ (Double.doubleToLongBits(this.ValorVenda) >>> 32));
@@ -68,7 +68,7 @@ public class Produto {
             return false;
         }
         final Produto other = (Produto) obj;
-        if (this.id != other.id) {
+        if (this.Id != other.Id) {
             return false;
         }
         if (!Objects.equals(this.nome, other.nome)) {
@@ -85,7 +85,27 @@ public class Produto {
 
     @Override
     public String toString() {
-        return "Produto{" + "id=" + id + ", nome=" + nome + ", ValorCompra=" + ValorCompra + ", ValorVenda=" + ValorVenda + '}';
+        return "Produto{" + "id=" + Id + ", nome=" + nome + ", ValorCompra=" + ValorCompra + ", ValorVenda=" + ValorVenda + '}';
+    }
+
+    public int getQuantidade() {
+        return Quantidade;
+    }
+
+    public void setQuantidade(int Quantidade) {
+        this.Quantidade = Quantidade;
+    }
+
+    public void setValorCompra(String text) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public void setValorVenda(String text) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public void setQuantidade(String text) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
     
