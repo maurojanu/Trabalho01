@@ -15,6 +15,7 @@ public class Produto {
     private String nome;
     private double ValorCompra;
     private double ValorVenda;
+    private int quantidade;
 
     public int getId() {
         return id;

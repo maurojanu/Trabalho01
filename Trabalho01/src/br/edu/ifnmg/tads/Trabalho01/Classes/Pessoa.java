@@ -4,9 +4,11 @@
  */
 package br.edu.ifnmg.tads.Trabalho01.Classes;
 
+import java.util.Date;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Objects;
-
+import javax.swing.JTextField;
 /**
  *
  * @author Mauro Sergio
@@ -15,7 +17,8 @@ public class Pessoa {
     private int id ;
     private String nome;
     private int cpf;
-    private int rg; 
+    private int rg;
+    private Date nascimento;
     private List<Email> emails;
     private List<Telefone> telefones;
     private List<Endereco> enderecos;
