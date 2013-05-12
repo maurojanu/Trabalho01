@@ -22,7 +22,7 @@ public class BD {
         return conexao;
     }
     
-    public void setConexao(Connection Conexao){
+    public void setConexao(Connection conexao){
         this.conexao = conexao;
     }
     
@@ -30,7 +30,7 @@ public class BD {
     
         try{
             Class.forName("com.mysql.jdbc.Driver");
-            conexao = DriverManager.getConnection("jdbc:mysql://127.0.0.1/trabalholtp3","root","12345"); 
+            conexao = DriverManager.getConnection("jdbc:mysql://localhost:3306/trabalholtp3","root","12345"); 
         } catch (ClassNotFoundException ex){
             Logger.getLogger(BD.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex){
