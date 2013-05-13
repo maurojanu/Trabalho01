@@ -22,7 +22,7 @@ public class BD {
         return conexao;
     }
     
-    public void setConexao(Connection Conexao){
+    public void setConexao(Connection conexao){
         this.conexao = conexao;
     }
     

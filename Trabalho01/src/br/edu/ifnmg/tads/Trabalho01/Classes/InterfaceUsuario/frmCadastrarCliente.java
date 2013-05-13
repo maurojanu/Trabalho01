@@ -4,7 +4,7 @@
  */
 package br.edu.ifnmg.tads.Trabalho01.Classes.InterfaceUsuario;
 
-import br.edu.ifnmg.tads.Trabalho01.DataAcess.DaoCliente;
+import br.edu.ifnmg.tads.Trabalho01.DataAcess.DAOCliente;
 import br.edu.ifnmg.tads.Trabalho01.Classes.Cliente;
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -356,14 +356,14 @@ public class frmCadastrarCliente extends javax.swing.JInternalFrame {
         if (JOptionPane.showConfirmDialog(rootPane, "Deseja realmente Salvar os Dados?")
                 == 0) {
             
-            Cliente pessoa = new Cliente();
+            Cliente cliente = new Cliente();
             try {
-                pessoa.setNome(txtNome.getText());
+                cliente.setNome(txtNome.getText());
             } catch (Exception ex) {
                 Logger.getLogger(frmCadastrarCliente.class.getName()).log(Level.SEVERE, null, ex);
             }
-            pessoa.setCpf(txtCPF.getText());
-            pessoa.setRg(txtRG.getText());
+            cliente.setCpf(txtCPF.getText());
+            cliente.setRg(txtRG.getText());
             
             Date test = null;
                 try {    
@@ -371,9 +371,9 @@ public class frmCadastrarCliente extends javax.swing.JInternalFrame {
                 } catch (Exception ex) {
                     Logger.getLogger(frmCadastrarCliente.class.getName()).log(Level.SEVERE, null, ex);
                 }
-            pessoa.setNascimento(test);
-            DaoCliente dao = new DaoCliente();
-            dao.Salvar(pessoa);
+            cliente.setNascimento(test);
+            DAOCliente dao = new DAOCliente();
+            dao.Salvar(cliente);
             
             
             JOptionPane.showMessageDialog(rootPane, "Cliente salvo com sucesso!");
