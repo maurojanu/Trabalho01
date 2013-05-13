@@ -3,6 +3,15 @@
  * and open the template in the editor.
  */
 package br.edu.ifnmg.tads.Trabalho01.Classes.InterfaceUsuario;
+
+import br.edu.ifnmg.tads.Trabalho01.DataAcess.DaoCliente;
+import br.edu.ifnmg.tads.Trabalho01.Classes.Cliente;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 /**
  *
@@ -13,6 +22,22 @@ public class frmCadastrarCliente extends javax.swing.JInternalFrame {
     /**
      * Creates new form frmInternalFrameCadastrarCliente
      */
+    
+    public static Date formataData(String data) throws Exception {   
+        if (data == null || data.equals(""))  
+            return null;  
+          
+        Date date = null;  
+        try {  
+            DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");  
+            date = (java.util.Date)formatter.parse(data);  
+        } catch (ParseException e) {              
+            throw e;  
+        }  
+        return date;  
+    }
+    
+    
     public frmCadastrarCliente() {
         initComponents();
     }
@@ -34,8 +59,8 @@ public class frmCadastrarCliente extends javax.swing.JInternalFrame {
         txtRG = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         txtCPF = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
-        txtCPF1 = new javax.swing.JTextField();
+        lblDataNasci = new javax.swing.JLabel();
+        txtDataNasci = new javax.swing.JTextField();
         jPanel7 = new javax.swing.JPanel();
         lblEndereco = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
@@ -82,7 +107,7 @@ public class frmCadastrarCliente extends javax.swing.JInternalFrame {
 
         jLabel1.setText("CPF");
 
-        jLabel2.setText("DataNasc:");
+        lblDataNasci.setText("DataNasc:");
 
         javax.swing.GroupLayout lblCPFLayout = new javax.swing.GroupLayout(lblCPF);
         lblCPF.setLayout(lblCPFLayout);
@@ -94,13 +119,13 @@ public class frmCadastrarCliente extends javax.swing.JInternalFrame {
                     .addComponent(lblRG, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblNome)
                     .addComponent(jLabel1)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblDataNasci, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(lblCPFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtRG, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtCPF1, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtDataNasci, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(102, Short.MAX_VALUE))
         );
         lblCPFLayout.setVerticalGroup(
@@ -120,8 +145,8 @@ public class frmCadastrarCliente extends javax.swing.JInternalFrame {
                         .addComponent(txtCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(lblCPFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel2)
-                            .addComponent(txtCPF1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(lblDataNasci)
+                            .addComponent(txtDataNasci, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jLabel1))
                 .addGap(96, 98, Short.MAX_VALUE))
         );
@@ -313,7 +338,7 @@ public class frmCadastrarCliente extends javax.swing.JInternalFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jTabbedPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -330,7 +355,28 @@ public class frmCadastrarCliente extends javax.swing.JInternalFrame {
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
         if (JOptionPane.showConfirmDialog(rootPane, "Deseja realmente Salvar os Dados?")
                 == 0) {
-            JOptionPane.showMessageDialog(rootPane, "Dados salvo com sucesso!");
+            
+            Cliente pessoa = new Cliente();
+            try {
+                pessoa.setNome(txtNome.getText());
+            } catch (Exception ex) {
+                Logger.getLogger(frmCadastrarCliente.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            pessoa.setCpf(txtCPF.getText());
+            pessoa.setRg(txtRG.getText());
+            
+            Date test = null;
+                try {    
+                    test = formataData(lblDataNasci.getText());
+                } catch (Exception ex) {
+                    Logger.getLogger(frmCadastrarCliente.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            pessoa.setNascimento(test);
+            DaoCliente dao = new DaoCliente();
+            dao.Salvar(pessoa);
+            
+            
+            JOptionPane.showMessageDialog(rootPane, "Cliente salvo com sucesso!");
         }
         else {
             JOptionPane.showMessageDialog(rootPane, "Ação cancelada pelo usuário!");
@@ -346,7 +392,6 @@ public class frmCadastrarCliente extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnSalvar;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
@@ -358,6 +403,7 @@ public class frmCadastrarCliente extends javax.swing.JInternalFrame {
     private javax.swing.JLabel lblCelular;
     private javax.swing.JLabel lblCidade;
     private javax.swing.JLabel lblComplemento;
+    private javax.swing.JLabel lblDataNasci;
     private javax.swing.JLabel lblEndereco;
     private javax.swing.JLabel lblEstado;
     private javax.swing.JLabel lblFixo;
@@ -368,12 +414,12 @@ public class frmCadastrarCliente extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txtBairro;
     private javax.swing.JTextField txtCEP;
     private javax.swing.JTextField txtCPF;
-    private javax.swing.JTextField txtCPF1;
     private javax.swing.JTextField txtCelular;
     private javax.swing.JTextField txtCelularDDD;
     private javax.swing.JTextField txtCelularDDD1;
     private javax.swing.JTextField txtCidade;
     private javax.swing.JTextField txtComplemento;
+    private javax.swing.JTextField txtDataNasci;
     private javax.swing.JTextField txtEstado;
     private javax.swing.JTextField txtFixo;
     private javax.swing.JTextField txtNome;

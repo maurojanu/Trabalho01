@@ -3,6 +3,7 @@
  * and open the template in the editor.
  */
 package br.edu.ifnmg.tads.Trabalho01.Classes.InterfaceUsuario;
+    
 import br.edu.ifnmg.tads.Trabalho01.DataAcess.DaoProduto;
 import br.edu.ifnmg.tads.Trabalho01.Classes.Produto;
 import javax.swing.JOptionPane;

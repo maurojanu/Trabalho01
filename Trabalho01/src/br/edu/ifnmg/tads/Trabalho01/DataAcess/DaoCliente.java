@@ -4,7 +4,6 @@
  */
 package br.edu.ifnmg.tads.Trabalho01.DataAcess;
 import br.edu.ifnmg.tads.Trabalho01.Classes.Cliente;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -27,14 +26,17 @@ public class DaoCliente {
                 comando.setString(1, obj.getNome());
                 comando.setString(2, obj.getCpf());
                 comando.setString(3, obj.getRg());
-                comando.setDate(4, (Date)obj.getNascimento());                
+                java.sql.Date data = new java.sql.Date(obj.getNascimento().getTime());
+                comando.setDate(4, data);                
                 comando.executeUpdate();
             } else {
-                PreparedStatement comando = bd.getConexao().prepareStatement("update clientes set Nome = ?,Cpf = ?, Rg = ?, Nascimento = 1 where Id = ?");
+                PreparedStatement comando = bd.getConexao().prepareStatement("update clientes set Nome = ?, Cpf = ?, Rg = ?, Nascimento = ? where Id = ?");
                 comando.setString(1, obj.getNome());
                 comando.setString(2, obj.getCpf());
                 comando.setString(3, obj.getRg());
-                comando.setDate(4, (Date)obj.getNascimento());
+                comando.setInt(4, obj.getId());
+                java.sql.Date data = new java.sql.Date(obj.getNascimento().getTime());
+                comando.setDate(5, data);
                 comando.executeUpdate();
             }
             return true;

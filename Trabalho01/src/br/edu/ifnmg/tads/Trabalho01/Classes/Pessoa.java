@@ -14,11 +14,11 @@ import javax.swing.JTextField;
  * @author Mauro Sergio
  */
 public class Pessoa {
-    private int id ;
-    private String nome;
-    private int cpf;
-    private int rg;
-    private Date nascimento;
+    private int Id ;
+    private String Nome;
+    private String Cpf;
+    private String Rg;
+    private Date Nascimento;
     private List<Email> emails;
     private List<Telefone> telefones;
     private List<Endereco> enderecos;
@@ -27,27 +27,24 @@ public class Pessoa {
     
     
     public int getId() {
-        return id;
+        return Id;
     }
 
     public void setId(int id)throws ErroValidacaoException {
-        if(id < 0){
-          throw new ErroValidacaoException("Id menor que zero");
-        }else{
-          this.id = id;
-        }
+        
+          this.Id = id;
+       
     }
 
     public String getNome() {
-        return nome;
+        return Nome;
     }
 
     public void setNome(String nome) throws Exception {
-        if(nome.length()>3 && nome.length()<250){
+       
 
-            this.nome = nome;
-        }
-        throw new Exception("Não pode haver nomes com menos de 3 letras e mais de 250 letras");
+            this.Nome = nome;
+       
     }
 
     public List<Email> getEmails() {
@@ -85,32 +82,41 @@ public class Pessoa {
        }
     }
 
-    public int getCpf() {
-        return cpf;
+    public String getCpf() {
+        return Cpf;
     }
 
-    public void setCpf(int cpf) {
-        this.cpf = cpf;
+    public void setCpf(String cpf) {
+        this.Cpf = cpf;
     }
 
-    public int getRg() {
-        return rg;
+    public String getRg() {
+        return Rg;
     }
 
-    public void setRg(int rg) {
-        this.rg = rg;
+    public void setRg(String rg) {
+        this.Rg = rg;
+    }
+
+    public Date getNascimento() {
+        return Nascimento;
+    }
+
+    public void setNascimento(Date Nascimento) {
+        this.Nascimento = Nascimento;
     }
 
     @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 29 * hash + this.id;
-        hash = 29 * hash + Objects.hashCode(this.nome);
-        hash = 29 * hash + this.cpf;
-        hash = 29 * hash + this.rg;
-        hash = 29 * hash + Objects.hashCode(this.emails);
-        hash = 29 * hash + Objects.hashCode(this.telefones);
-        hash = 29 * hash + Objects.hashCode(this.enderecos);
+        int hash = 3;
+        hash = 37 * hash + this.Id;
+        hash = 37 * hash + Objects.hashCode(this.Nome);
+        hash = 37 * hash + Objects.hashCode(this.Cpf);
+        hash = 37 * hash + Objects.hashCode(this.Rg);
+        hash = 37 * hash + Objects.hashCode(this.Nascimento);
+        hash = 37 * hash + Objects.hashCode(this.emails);
+        hash = 37 * hash + Objects.hashCode(this.telefones);
+        hash = 37 * hash + Objects.hashCode(this.enderecos);
         return hash;
     }
 
@@ -123,16 +129,19 @@ public class Pessoa {
             return false;
         }
         final Pessoa other = (Pessoa) obj;
-        if (this.id != other.id) {
+        if (this.Id != other.Id) {
             return false;
         }
-        if (!Objects.equals(this.nome, other.nome)) {
+        if (!Objects.equals(this.Nome, other.Nome)) {
             return false;
         }
-        if (this.cpf != other.cpf) {
+        if (!Objects.equals(this.Cpf, other.Cpf)) {
             return false;
         }
-        if (this.rg != other.rg) {
+        if (!Objects.equals(this.Rg, other.Rg)) {
+            return false;
+        }
+        if (!Objects.equals(this.Nascimento, other.Nascimento)) {
             return false;
         }
         if (!Objects.equals(this.emails, other.emails)) {
@@ -149,8 +158,9 @@ public class Pessoa {
 
     @Override
     public String toString() {
-        return "Pessoa{" + "id=" + id + ", nome=" + nome + ", cpf=" + cpf + ", rg=" + rg + ", emails=" + emails + ", telefones=" + telefones + ", enderecos=" + enderecos + '}';
+        return "Pessoa{" + "Id=" + Id + ", Nome=" + Nome + ", Cpf=" + Cpf + ", Rg=" + Rg + ", Nascimento=" + Nascimento + ", emails=" + emails + ", telefones=" + telefones + ", enderecos=" + enderecos + '}';
     }
+
     
     
     
