@@ -357,17 +357,14 @@ public class frmCadastrarCliente extends javax.swing.JInternalFrame {
                 == 0) {
             
             Cliente cliente = new Cliente();
-            try {
-                cliente.setNome(txtNome.getText());
-            } catch (Exception ex) {
-                Logger.getLogger(frmCadastrarCliente.class.getName()).log(Level.SEVERE, null, ex);
-            }
+           
+            cliente.setNome(txtNome.getText());
             cliente.setCpf(txtCPF.getText());
             cliente.setRg(txtRG.getText());
             
             Date test = null;
                 try {    
-                    test = formataData(lblDataNasci.getText());
+                    test = formataData(txtDataNasci.getText());
                 } catch (Exception ex) {
                     Logger.getLogger(frmCadastrarCliente.class.getName()).log(Level.SEVERE, null, ex);
                 }

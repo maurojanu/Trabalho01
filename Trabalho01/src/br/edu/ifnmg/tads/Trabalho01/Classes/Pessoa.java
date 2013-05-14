@@ -40,7 +40,7 @@ public class Pessoa {
         return Nome;
     }
 
-    public void setNome(String nome) throws Exception {
+    public void setNome(String nome) {
        
 
             this.Nome = nome;

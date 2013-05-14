@@ -197,9 +197,9 @@ public class frmCadastrarProduto extends javax.swing.JInternalFrame {
            
           Produto Prod = new Produto();
           Prod.setNome(txtNome.getText());
-          Prod.setValorCompra(txtValorCompra.getText());
-          Prod.setValorVenda(txtValorVenda.getText());
-          Prod.setQuantidade(txtQuantidade.getText());
+          Prod.setValorCompra(Double.parseDouble(txtValorCompra.getText()));
+          Prod.setValorVenda(Double.parseDouble(txtValorVenda.getText()));
+          Prod.setQuantidade(Integer.parseInt(txtQuantidade.getText()));
           
           DAOProduto dao = new DAOProduto();
           dao.Salvar(Prod);

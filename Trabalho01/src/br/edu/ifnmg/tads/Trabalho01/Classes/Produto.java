@@ -21,41 +21,50 @@ public class Produto {
         return Id;
     }
 
+    public void setId(int Id) {
+        this.Id = Id;
+    }
+
     public String getNome() {
         return nome;
-    }
-
-    public double getValorCompra() {
-        return ValorCompra;
-    }
-
-    public double getValorVenda() {
-        return ValorVenda;
-    }
-
-    public void setId(int id) {
-        this.Id = id;
     }
 
     public void setNome(String nome) {
         this.nome = nome;
     }
 
+    public double getValorCompra() {
+        return ValorCompra;
+    }
+
     public void setValorCompra(double ValorCompra) {
         this.ValorCompra = ValorCompra;
+    }
+
+    public double getValorVenda() {
+        return ValorVenda;
     }
 
     public void setValorVenda(double ValorVenda) {
         this.ValorVenda = ValorVenda;
     }
 
+    public int getQuantidade() {
+        return Quantidade;
+    }
+
+    public void setQuantidade(int Quantidade) {
+        this.Quantidade = Quantidade;
+    }
+
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 29 * hash + this.Id;
-        hash = 29 * hash + Objects.hashCode(this.nome);
-        hash = 29 * hash + (int) (Double.doubleToLongBits(this.ValorCompra) ^ (Double.doubleToLongBits(this.ValorCompra) >>> 32));
-        hash = 29 * hash + (int) (Double.doubleToLongBits(this.ValorVenda) ^ (Double.doubleToLongBits(this.ValorVenda) >>> 32));
+        int hash = 5;
+        hash = 53 * hash + this.Id;
+        hash = 53 * hash + Objects.hashCode(this.nome);
+        hash = 53 * hash + (int) (Double.doubleToLongBits(this.ValorCompra) ^ (Double.doubleToLongBits(this.ValorCompra) >>> 32));
+        hash = 53 * hash + (int) (Double.doubleToLongBits(this.ValorVenda) ^ (Double.doubleToLongBits(this.ValorVenda) >>> 32));
+        hash = 53 * hash + this.Quantidade;
         return hash;
     }
 
@@ -80,33 +89,17 @@ public class Produto {
         if (Double.doubleToLongBits(this.ValorVenda) != Double.doubleToLongBits(other.ValorVenda)) {
             return false;
         }
+        if (this.Quantidade != other.Quantidade) {
+            return false;
+        }
         return true;
     }
 
     @Override
     public String toString() {
-        return "Produto{" + "id=" + Id + ", nome=" + nome + ", ValorCompra=" + ValorCompra + ", ValorVenda=" + ValorVenda + '}';
+        return "Produto{" + "Id=" + Id + ", nome=" + nome + ", ValorCompra=" + ValorCompra + ", ValorVenda=" + ValorVenda + ", Quantidade=" + Quantidade + '}';
     }
 
-    public int getQuantidade() {
-        return Quantidade;
-    }
-
-    public void setQuantidade(int Quantidade) {
-        this.Quantidade = Quantidade;
-    }
-
-    public void setValorCompra(String text) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    public void setValorVenda(String text) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    public void setQuantidade(String text) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
     
     
 }
