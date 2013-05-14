@@ -4,19 +4,52 @@
  */
 package br.edu.ifnmg.tads.Trabalho01.Classes.InterfaceUsuario;
 
+import br.edu.ifnmg.tads.Trabalho01.DataAcess.DAOProduto;
+import br.edu.ifnmg.tads.Trabalho01.Classes.Produto;
+
+import java.util.List;
+import java.util.Vector;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumn;
+import javax.swing.table.TableModel;
 /**
  *
  * @author marcelosa
  */
 public class frmListagemProdutos extends javax.swing.JInternalFrame {
 
+    DAOProduto dao;
     /**
      * Creates new form frmListagemProdutos
      */
     public frmListagemProdutos() {
         initComponents();
+        dao = new DAOProduto();
+        List<Produto> produtos = dao.listarTodos();
+        
+        preencheTabela(produtos);
     }
-
+private void preencheTabela(List<Produto> lista) {
+        DefaultTableModel model = new DefaultTableModel();
+        model.addColumn("Id");
+        model.addColumn("Nome");
+        model.addColumn("ValorCompra");
+        model.addColumn("ValorVenda");
+        model.addColumn("Quantidade");
+        
+        for (Produto p : lista) {
+            Vector valores = new Vector();
+            valores.add(0,p.getId());
+            valores.add(1,p.getNome());
+            valores.add(2,p.getValorCompra());
+            valores.add(3,p.getValorVenda());
+            valores.add(4,p.getQuantidade());
+            model.addRow(valores);
+        }
+        tblListar.setModel(model);
+        tblListar.repaint();
+        
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -26,25 +59,97 @@ public class frmListagemProdutos extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        txtFiltro = new javax.swing.JTextField();
+        btnFiltro = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblListar = new javax.swing.JTable();
+
         setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
         setTitle("Listagem Produtos");
 
+        btnFiltro.setText("Filtrar");
+        btnFiltro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFiltroActionPerformed(evt);
+            }
+        });
+
+        tblListar.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {},
+                {},
+                {},
+                {}
+            },
+            new String [] {
+
+            }
+        ));
+        tblListar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblListarMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tblListar);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 394, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 385, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(32, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(txtFiltro)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(41, 41, 41))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 278, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnFiltro))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(42, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnFiltroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFiltroActionPerformed
+        // TODO add your handling code here:
+        Produto p = new Produto();
+        p.setNome(txtFiltro.getText());
+        
+        List<Produto> lista = dao.buscar(p);
+        
+        preencheTabela(lista);
+    }//GEN-LAST:event_btnFiltroActionPerformed
+
+    private void tblListarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblListarMouseClicked
+        // TODO add your handling code here:
+       /* Object valor = tblListar.getValueAt( tblListar.getSelectedRow(), 0);
+        Produto p = dao.Abrir((int)valor);
+        frmProdutoEditar janela = new frmProdutoEditar(p, dao);
+        this.getParent().add(janela);
+        janela.setVisible(true);
+        this.setVisible(false);*/
+    }//GEN-LAST:event_tblListarMouseClicked
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnFiltro;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable tblListar;
+    private javax.swing.JTextField txtFiltro;
     // End of variables declaration//GEN-END:variables
 }
