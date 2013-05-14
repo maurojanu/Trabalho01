@@ -11,35 +11,28 @@ import java.util.Objects;
  * @author marcelosa
  */
 public class Pagamento {
-    private int id;
-    private String Descricao;
-
-    public Pagamento(int id, String Descricao) {
-        this.id = id;
-        this.Descricao = Descricao;
+    
+    private String Nome;
+    private int  Id ;
+    
+    public Pagamento() {
+       Nome = "";
     }
 
-    public int getId() {
-        return id;
+    
+    
+    public String getNome() {
+        return Nome;
     }
 
-    public String getDescricao() {
-        return Descricao;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public void setDescricao(String Descricao) {
-        this.Descricao = Descricao;
+    public void setNome(String Nome) {
+        this.Nome = Nome;
     }
 
     @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 29 * hash + this.id;
-        hash = 29 * hash + Objects.hashCode(this.Descricao);
+        int hash = 7;
+        hash = 53 * hash + Objects.hashCode(this.Nome);
         return hash;
     }
 
@@ -52,10 +45,7 @@ public class Pagamento {
             return false;
         }
         final Pagamento other = (Pagamento) obj;
-        if (this.id != other.id) {
-            return false;
-        }
-        if (!Objects.equals(this.Descricao, other.Descricao)) {
+        if (!Objects.equals(this.Nome, other.Nome)) {
             return false;
         }
         return true;
@@ -63,9 +53,18 @@ public class Pagamento {
 
     @Override
     public String toString() {
-        return "Pagamento{" + "id=" + id + ", Descricao=" + Descricao + '}';
+        return "Pagamento{" + "Nome=" + Nome + '}';
     }
 
+    public int getId() {
+        return Id;
+    }
+
+    public void setId(int Id) {
+        this.Id = Id;
+    }
+
+    
    
     
     

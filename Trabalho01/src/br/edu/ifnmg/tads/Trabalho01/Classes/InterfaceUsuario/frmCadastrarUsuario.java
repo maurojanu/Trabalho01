@@ -4,6 +4,11 @@
  */
 package br.edu.ifnmg.tads.Trabalho01.Classes.InterfaceUsuario;
 
+import br.edu.ifnmg.tads.Trabalho01.DataAcess.DAOUsuario;
+import br.edu.ifnmg.tads.Trabalho01.Classes.Usuario;
+import java.text.ParseException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -126,7 +131,16 @@ public class frmCadastrarUsuario extends javax.swing.JInternalFrame {
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
         if (JOptionPane.showConfirmDialog(rootPane, "Deseja realmente Salvar os Dados?")
                 == 0) {
-            JOptionPane.showMessageDialog(rootPane, "Dados salvo com sucesso!");
+            
+            Usuario usuario = new Usuario();
+           
+            usuario.setNome(txtNome.getText());
+            usuario.setSenha(txtSenha.getText());
+            
+            DAOUsuario dao = new DAOUsuario();
+            dao.Salvar(usuario);
+            
+            JOptionPane.showMessageDialog(rootPane, "Usuário salvo com sucesso!");
         }
         else {
             JOptionPane.showMessageDialog(rootPane, "Ação cancelada pelo usuário!");

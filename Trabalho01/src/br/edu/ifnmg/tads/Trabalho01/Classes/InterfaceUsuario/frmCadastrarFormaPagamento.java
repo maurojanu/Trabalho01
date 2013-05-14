@@ -4,6 +4,8 @@
  */
 package br.edu.ifnmg.tads.Trabalho01.Classes.InterfaceUsuario;
 
+import br.edu.ifnmg.tads.Trabalho01.DataAcess.DAOFormaPagamento;
+import br.edu.ifnmg.tads.Trabalho01.Classes.Pagamento;
 import javax.swing.JOptionPane;
 
 /**
@@ -117,7 +119,14 @@ public class frmCadastrarFormaPagamento extends javax.swing.JInternalFrame {
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
         if (JOptionPane.showConfirmDialog(rootPane, "Deseja realmente Salvar os Dados?")
                 == 0) {
-            JOptionPane.showMessageDialog(rootPane, "Dados salvo com sucesso!");
+            
+            Pagamento pagamento =  new Pagamento();
+            
+            pagamento.setNome(txtNome.getText());
+            
+            DAOFormaPagamento dao = new DAOFormaPagamento();
+            dao.Salvar(pagamento);
+            JOptionPane.showMessageDialog(rootPane, "Forma Pagamento salvo com sucesso!");
         }
         else {
             JOptionPane.showMessageDialog(rootPane, "Ação cancelada pelo usuário!");

@@ -4,33 +4,33 @@
  */
 package br.edu.ifnmg.tads.Trabalho01.Classes;
 
+import java.util.Objects;
+
 /**
  *
  * @author marcelosa
  */
 public class Usuario extends Pessoa {
-    private int id;
-    private int senha;
+  
+    private String Senha;
 
-    public Usuario(int id, int senha) {
-        this.id = id;
-        this.senha = senha;
+    public Usuario() {
+        Senha = "";
     }
 
-    
-    public int getSenha() {
-        return senha;
+   
+    public String getSenha() {
+        return Senha;
     }
 
-    public void setSenha(int senha) {
-        this.senha = senha;
+    public void setSenha(String Senha) {
+        this.Senha = Senha;
     }
 
     @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 89 * hash + this.id;
-        hash = 89 * hash + this.senha;
+        int hash = 7;
+        hash = 31 * hash + Objects.hashCode(this.Senha);
         return hash;
     }
 
@@ -43,10 +43,7 @@ public class Usuario extends Pessoa {
             return false;
         }
         final Usuario other = (Usuario) obj;
-        if (this.id != other.id) {
-            return false;
-        }
-        if (this.senha != other.senha) {
+        if (!Objects.equals(this.Senha, other.Senha)) {
             return false;
         }
         return true;
@@ -54,8 +51,14 @@ public class Usuario extends Pessoa {
 
     @Override
     public String toString() {
-        return "Usuario{" + "id=" + id + ", senha=" + senha + '}';
+        return "Usuario{" + "Senha=" + Senha + '}';
     }
+
+    
+
+    
+
+    
     
     
 }
