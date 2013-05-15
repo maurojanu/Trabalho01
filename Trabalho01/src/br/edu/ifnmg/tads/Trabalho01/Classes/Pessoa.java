@@ -30,7 +30,7 @@ public class Pessoa {
         return Id;
     }
 
-    public void setId(int id)throws ErroValidacaoException {
+    public void setId(int id){
         
           this.Id = id;
        
