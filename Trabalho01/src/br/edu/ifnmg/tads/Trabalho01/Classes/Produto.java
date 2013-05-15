@@ -102,6 +102,10 @@ public class Produto {
         return "Produto{" + "Id=" + Id + ", nome=" + nome + ", ValorCompra=" + ValorCompra + ", ValorVenda=" + ValorVenda + ", Quantidade=" + Quantidade + '}';
     }
 
+    public void setId(String text) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     
     
 }

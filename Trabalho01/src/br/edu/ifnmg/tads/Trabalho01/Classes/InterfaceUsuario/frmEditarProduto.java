@@ -34,10 +34,11 @@ public class frmEditarProduto extends javax.swing.JInternalFrame {
     }
 
     private void carregaObjeto() {
+       
         produto.setNome(txtNome.getText());
         produto.setValorCompra(Double.parseDouble(txtValorCompra.getText()));
-        produto.setValorCompra(Double.parseDouble(txtValorCompra.getText()));
-        produto.setQuantidade(Integer.parseInt(txtValorCompra.getText()));
+        produto.setValorVenda(Double.parseDouble(txtValorVenda.getText()));
+        produto.setQuantidade(Integer.parseInt(txtQuantidade.getText()));
     }
     /**
      * This method is called from within the constructor to initialize the form.
