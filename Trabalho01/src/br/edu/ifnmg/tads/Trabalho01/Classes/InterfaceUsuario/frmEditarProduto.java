@@ -4,7 +4,7 @@
  */
 package br.edu.ifnmg.tads.Trabalho01.Classes.InterfaceUsuario;
 
-import br.edu.ifnmg.tads.Trabalho01.DataAcess.DAOProduto;
+import br.edu.ifnmg.tads.Trabalho01.DataAcess.DAOProdutos;
 import br.edu.ifnmg.tads.Trabalho01.Classes.Produto;
 import javax.swing.JOptionPane;
 /**
@@ -14,11 +14,11 @@ import javax.swing.JOptionPane;
 public class frmEditarProduto extends javax.swing.JInternalFrame {
 
     Produto produto;
-    DAOProduto dao;
+    DAOProdutos dao;
     /**
      * Creates new form frmEditarProduto
      */
-    public frmEditarProduto(Produto p , DAOProduto d) {
+    public frmEditarProduto(Produto p , DAOProdutos d) {
         initComponents();
         this.produto = p;
         this.dao = d;

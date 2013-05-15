@@ -4,7 +4,7 @@
  */
 package br.edu.ifnmg.tads.Trabalho01.Classes.InterfaceUsuario;
 
-import br.edu.ifnmg.tads.Trabalho01.DataAcess.DAOCliente;
+import br.edu.ifnmg.tads.Trabalho01.DataAcess.DAOClientes;
 import br.edu.ifnmg.tads.Trabalho01.Classes.Cliente;
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -369,7 +369,7 @@ public class frmCadastrarCliente extends javax.swing.JInternalFrame {
                     Logger.getLogger(frmCadastrarCliente.class.getName()).log(Level.SEVERE, null, ex);
                 }
             cliente.setNascimento(test);
-            DAOCliente dao = new DAOCliente();
+            DAOClientes dao = new DAOClientes();
             dao.Salvar(cliente);
             
             

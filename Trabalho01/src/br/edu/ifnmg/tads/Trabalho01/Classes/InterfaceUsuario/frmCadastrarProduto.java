@@ -4,7 +4,7 @@
  */
 package br.edu.ifnmg.tads.Trabalho01.Classes.InterfaceUsuario;
     
-import br.edu.ifnmg.tads.Trabalho01.DataAcess.DAOProduto;
+import br.edu.ifnmg.tads.Trabalho01.DataAcess.DAOProdutos;
 import br.edu.ifnmg.tads.Trabalho01.Classes.Produto;
 import javax.swing.JOptionPane;
 
@@ -201,7 +201,7 @@ public class frmCadastrarProduto extends javax.swing.JInternalFrame {
           Prod.setValorVenda(Double.parseDouble(txtValorVenda.getText()));
           Prod.setQuantidade(Integer.parseInt(txtQuantidade.getText()));
           
-          DAOProduto dao = new DAOProduto();
+          DAOProdutos dao = new DAOProdutos();
           dao.Salvar(Prod);
                   
           

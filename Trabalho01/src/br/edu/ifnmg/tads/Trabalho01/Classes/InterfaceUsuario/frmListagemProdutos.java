@@ -4,7 +4,7 @@
  */
 package br.edu.ifnmg.tads.Trabalho01.Classes.InterfaceUsuario;
 
-import br.edu.ifnmg.tads.Trabalho01.DataAcess.DAOProduto;
+import br.edu.ifnmg.tads.Trabalho01.DataAcess.DAOProdutos;
 import br.edu.ifnmg.tads.Trabalho01.Classes.Produto;
 
 import java.util.List;
@@ -18,13 +18,13 @@ import javax.swing.table.TableModel;
  */
 public class frmListagemProdutos extends javax.swing.JInternalFrame {
 
-    DAOProduto dao;
+    DAOProdutos dao;
     /**
      * Creates new form frmListagemProdutos
      */
     public frmListagemProdutos() {
         initComponents();
-        dao = new DAOProduto();
+        dao = new DAOProdutos();
         List<Produto> produtos = dao.listarTodos();
         
         preencheTabela(produtos);
