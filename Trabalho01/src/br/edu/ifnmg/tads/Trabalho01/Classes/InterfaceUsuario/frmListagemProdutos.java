@@ -7,6 +7,7 @@ package br.edu.ifnmg.tads.Trabalho01.Classes.InterfaceUsuario;
 import br.edu.ifnmg.tads.Trabalho01.DataAcess.DAOProdutos;
 import br.edu.ifnmg.tads.Trabalho01.Classes.Produto;
 
+
 import java.util.List;
 import java.util.Vector;
 import javax.swing.table.DefaultTableModel;
@@ -120,7 +121,7 @@ private void preencheTabela(List<Produto> lista) {
                     .addComponent(btnFiltro))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(42, Short.MAX_VALUE))
+                .addContainerGap(46, Short.MAX_VALUE))
         );
 
         pack();
@@ -138,12 +139,15 @@ private void preencheTabela(List<Produto> lista) {
 
     private void tblListarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblListarMouseClicked
         // TODO add your handling code here:
+        
         Object valor = tblListar.getValueAt( tblListar.getSelectedRow(), 0);
         Produto p = dao.Abrir((int)valor);
         frmEditarProduto janela = new frmEditarProduto(p, dao);
         this.getParent().add(janela);
         janela.setVisible(true);
         this.setVisible(false);
+        
+        
     }//GEN-LAST:event_tblListarMouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
