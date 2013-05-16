@@ -4,19 +4,49 @@
  */
 package br.edu.ifnmg.tads.Trabalho01.Classes.InterfaceUsuario;
 
+import br.edu.ifnmg.tads.Trabalho01.DataAcess.DAOFormaPagamento;
+import br.edu.ifnmg.tads.Trabalho01.Classes.Pagamento;
+
+import java.util.List;
+import java.util.Vector;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumn;
+import javax.swing.table.TableModel;
 /**
  *
  * @author marcelosa
  */
 public class frmListagemFormasPagamentos extends javax.swing.JInternalFrame {
 
+    DAOFormaPagamento dao;
     /**
      * Creates new form frmListagemFormasPagamentos
      */
     public frmListagemFormasPagamentos() {
         initComponents();
+        dao = new DAOFormaPagamento();
+        List<Pagamento> pagamentos = dao.listarTodos();
+        
+        preencheTabela(pagamentos);
     }
-
+private void preencheTabela(List<Pagamento> lista) {
+        DefaultTableModel model = new DefaultTableModel();
+        model.addColumn("Id");
+        model.addColumn("Nome");
+        
+        
+        for (Pagamento p : lista) {
+            Vector valores = new Vector();
+            valores.add(0,p.getId());
+            valores.add(1,p.getNome());
+            //valores.add(2,u.getSenha());
+            
+            model.addRow(valores);
+        }
+        tblListar.setModel(model);
+        tblListar.repaint();
+        
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -26,25 +56,97 @@ public class frmListagemFormasPagamentos extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        btnFiltro = new javax.swing.JButton();
+        txtFiltro = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblListar = new javax.swing.JTable();
+
         setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
         setTitle("Listagem Formas de Pagamentos");
 
+        btnFiltro.setText("Filtrar");
+        btnFiltro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFiltroActionPerformed(evt);
+            }
+        });
+
+        tblListar.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {},
+                {},
+                {},
+                {}
+            },
+            new String [] {
+
+            }
+        ));
+        tblListar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblListarMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tblListar);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 394, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 369, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(26, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(txtFiltro)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnFiltro)
+                        .addGap(21, 21, 21))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 278, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(31, 31, 31)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnFiltro)
+                    .addComponent(txtFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(47, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnFiltroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFiltroActionPerformed
+        // TODO add your handling code here:
+        Pagamento p = new Pagamento();
+        p.setNome(txtFiltro.getText());
+        
+        List<Pagamento> lista = dao.buscar(p);
+        
+        preencheTabela(lista);
+    }//GEN-LAST:event_btnFiltroActionPerformed
+
+    private void tblListarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblListarMouseClicked
+        // TODO add your handling code here:
+        Object valor = tblListar.getValueAt( tblListar.getSelectedRow(), 0);
+        Pagamento p = dao.Abrir((int)valor);
+        frmEditarPagamento janela = new frmEditarPagamento(p, dao);
+        this.getParent().add(janela);
+        janela.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_tblListarMouseClicked
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnFiltro;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable tblListar;
+    private javax.swing.JTextField txtFiltro;
     // End of variables declaration//GEN-END:variables
 }
