@@ -162,7 +162,7 @@ private void carregaCampos() {
                 carregaObjeto();
                 
                 if (dao.Salvar(usuario)) {
-                    JOptionPane.showMessageDialog(rootPane, "Salvo com sucesso!");
+                    JOptionPane.showMessageDialog(rootPane, "Usuário alterado com sucesso!");
                 } else {
                     JOptionPane.showMessageDialog(rootPane, "Falha ao salvar! Consulte o administrador do sistema!");
                 }

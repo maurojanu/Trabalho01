@@ -184,7 +184,7 @@ public class frmEditarProduto extends javax.swing.JInternalFrame {
                 carregaObjeto();
                 
                 if (dao.Salvar(produto)) {
-                    JOptionPane.showMessageDialog(rootPane, "Salvo com sucesso!");
+                    JOptionPane.showMessageDialog(rootPane, "Produto editado com sucesso!");
                 } else {
                     JOptionPane.showMessageDialog(rootPane, "Falha ao salvar! Consulte o administrador do sistema!");
                 }

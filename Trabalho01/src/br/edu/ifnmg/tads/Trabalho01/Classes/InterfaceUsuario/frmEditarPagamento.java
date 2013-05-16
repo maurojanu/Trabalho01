@@ -147,7 +147,7 @@ private void carregaCampos() {
                 carregaObjeto();
                 
                 if (dao.Salvar(pagamento)) {
-                    JOptionPane.showMessageDialog(rootPane, "Pagamento Salvo com sucesso!");
+                    JOptionPane.showMessageDialog(rootPane, "Pagamento editado com sucesso!");
                 } else {
                     JOptionPane.showMessageDialog(rootPane, "Falha ao salvar! Consulte o administrador do sistema!");
                 }
