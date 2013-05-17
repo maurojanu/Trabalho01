@@ -36,6 +36,9 @@ public class frmEditarCliente extends javax.swing.JInternalFrame {
         txtCPF = new javax.swing.JTextField();
         lblDataNasci = new javax.swing.JLabel();
         txtDataNasci = new javax.swing.JTextField();
+        btnSalvar = new javax.swing.JButton();
+        btnLimpar = new javax.swing.JButton();
+        btnApagar = new javax.swing.JButton();
         jPanel7 = new javax.swing.JPanel();
         lblEndereco = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
@@ -82,23 +85,38 @@ public class frmEditarCliente extends javax.swing.JInternalFrame {
 
         lblDataNasci.setText("DataNasc:");
 
+        btnSalvar.setText("Salvar");
+
+        btnLimpar.setText("Limpar");
+
+        btnApagar.setText("Apagar");
+
         javax.swing.GroupLayout lblCPFLayout = new javax.swing.GroupLayout(lblCPF);
         lblCPF.setLayout(lblCPFLayout);
         lblCPFLayout.setHorizontalGroup(
             lblCPFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(lblCPFLayout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(lblCPFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblRG, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblNome)
-                    .addComponent(jLabel1)
-                    .addComponent(lblDataNasci, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(lblCPFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtRG, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtDataNasci, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(lblCPFLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(lblCPFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblRG, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblNome)
+                            .addComponent(jLabel1)
+                            .addComponent(lblDataNasci, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(lblCPFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtRG, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtDataNasci, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(lblCPFLayout.createSequentialGroup()
+                        .addGap(51, 51, 51)
+                        .addComponent(btnSalvar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnLimpar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnApagar)))
                 .addContainerGap(102, Short.MAX_VALUE))
         );
         lblCPFLayout.setVerticalGroup(
@@ -121,7 +139,12 @@ public class frmEditarCliente extends javax.swing.JInternalFrame {
                             .addComponent(lblDataNasci)
                             .addComponent(txtDataNasci, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jLabel1))
-                .addGap(96, 98, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                .addGroup(lblCPFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnSalvar)
+                    .addComponent(btnLimpar)
+                    .addComponent(btnApagar))
+                .addGap(35, 35, 35))
         );
 
         jTabbedPane2.addTab("Dados Gerais", lblCPF);
@@ -290,7 +313,7 @@ public class frmEditarCliente extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jTabbedPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
 
         pack();
@@ -301,6 +324,9 @@ public class frmEditarCliente extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtNomeActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnApagar;
+    private javax.swing.JButton btnLimpar;
+    private javax.swing.JButton btnSalvar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
