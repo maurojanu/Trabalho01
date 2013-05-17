@@ -100,6 +100,8 @@ public class frmEditarProduto extends javax.swing.JInternalFrame {
             }
         });
 
+        txtId.setEnabled(false);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -170,7 +172,7 @@ public class frmEditarProduto extends javax.swing.JInternalFrame {
                     .addComponent(btnSalvar)
                     .addComponent(btnLimpar)
                     .addComponent(btnApagar))
-                .addContainerGap(43, Short.MAX_VALUE))
+                .addContainerGap(51, Short.MAX_VALUE))
         );
 
         pack();

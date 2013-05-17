@@ -24,6 +24,10 @@ public class Cliente extends Pessoa {
     public String toString() {
         return "Cliente{" + '}';
     }
+
+    public void setNascimento(String text) {
+       
+    }
     
     
     

@@ -136,12 +136,12 @@ private void preencheTabela(List<Cliente> lista) {
 
     private void tblListarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblListarMouseClicked
         // TODO add your handling code here:
-        /*Object valor = tblListar.getValueAt( tblListar.getSelectedRow(), 0);
+        Object valor = tblListar.getValueAt( tblListar.getSelectedRow(), 0);
         Cliente c = dao.Abrir((int)valor);
-        frmEditarCliente janela = new frmEditarCliente(c, dao);
+        frmEditarClientes janela = new frmEditarClientes(c, dao);
         this.getParent().add(janela);
         janela.setVisible(true);
-        this.setVisible(false);*/
+        this.setVisible(false);
     }//GEN-LAST:event_tblListarMouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
