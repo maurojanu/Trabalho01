@@ -10,6 +10,8 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -27,6 +29,7 @@ public class frmEditarClientes extends javax.swing.JInternalFrame {
         initComponents();
         this.clientes = c;
         this.dao = d;
+        carregaCampos();
     }
 public static Date formataData(String data) throws Exception {   
         if (data == null || data.equals(""))  
@@ -47,13 +50,20 @@ public static Date formataData(String data) throws Exception {
     }
 
     
+
+
+    
     
 private void carregaCampos() {
         
         txtNome.setText(clientes.getNome());
         txtRG.setText(clientes.getNome());
         txtCPF.setText(clientes.getNome());
-        txtDataNasci.setText(clientes.getNome());
+        
+        Date sqlDate = clientes.getNascimento();    
+        String date = new SimpleDateFormat("dd/MM/yyyy").format(new java.util.Date(sqlDate.getTime()));   
+        txtDataNasci.setText(date);
+        
         
     }
 
@@ -66,7 +76,7 @@ private void carregaCampos() {
         
         Date sqlDate = clientes.getNascimento();    
         String date = new SimpleDateFormat("dd/MM/yyyy").format(new java.util.Date(sqlDate.getTime()));   
-        txtDataNasci.setText(date);
+        clientes.setNascimento(sqlDate);
        
         
     }
@@ -393,23 +403,32 @@ private void carregaCampos() {
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
         // TODO add your handling code here:
-        try {
+       
             if (JOptionPane.showConfirmDialog(rootPane, "Deseja Salvar?") == 0) {
 
                 carregaObjeto();
-                
-                if (dao.Salvar(clientes)) {
-                    JOptionPane.showMessageDialog(rootPane, "Cliente alterado com sucesso!");
-                } else {
-                    JOptionPane.showMessageDialog(rootPane, "Falha ao salvar! Consulte o administrador do sistema!");
+                Cliente cliente2 = new Cliente();
+                cliente2.setNome(txtNome.getText());
+                cliente2.setCpf(txtCPF.getText());
+                cliente2.setRg(txtRG.getText());
+               Date test = null;
+                try {    
+                    test = formataData(txtDataNasci.getText());
+                } catch (Exception ex) {
+                    Logger.getLogger(frmCadastrarCliente.class.getName()).log(Level.SEVERE, null, ex);
                 }
+            cliente2.setNascimento(test);
+            //DAOCliente dao = new DAOCliente();
+            dao.Salvar(cliente2);
+             
+                    
+                    JOptionPane.showMessageDialog(rootPane, "Cliente alterado com sucesso!");
+                
 
             } else {                
                 JOptionPane.showMessageDialog(rootPane, "Operação cancelada!");
             }
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(rootPane, "Erro ao salvar! Consulte o administrador do sistema!");
-        }
+         
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void btnLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparActionPerformed

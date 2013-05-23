@@ -8,6 +8,12 @@
 	</queryString>
 	<field name="Id" class="java.lang.Integer"/>
 	<field name="Nome" class="java.lang.String"/>
+	<field name="RG" class="java.lang.String"/>
+	<field name="CPF" class="java.lang.String"/>
+	<field name="Nascimento" class="java.lang.String"/>
+	<variable name="Somatorio" class="java.lang.Integer" calculation="Sum">
+		<variableExpression><![CDATA[$F{Id}]]></variableExpression>
+	</variable>
 	<group name="Id">
 		<groupExpression><![CDATA[$F{Id}]]></groupExpression>
 	</group>
@@ -18,7 +24,15 @@
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="79" splitType="Stretch"/>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="0ac49477-3d83-45aa-8c14-90b060dc4dca" x="156" y="25" width="195" height="24"/>
+				<textElement>
+					<font size="13" isBold="true" isItalic="true" isUnderline="false" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[Relatório Clientes Cadastrados]]></text>
+			</staticText>
+		</band>
 	</title>
 	<pageHeader>
 		<band height="35" splitType="Stretch"/>
@@ -26,33 +40,84 @@
 	<columnHeader>
 		<band height="29" splitType="Stretch">
 			<staticText>
-				<reportElement uuid="ca5a7efa-edad-4fac-8be1-8caf7c2a97ae" x="191" y="2" width="100" height="20"/>
+				<reportElement uuid="ca5a7efa-edad-4fac-8be1-8caf7c2a97ae" x="91" y="2" width="100" height="20"/>
 				<textElement/>
 				<text><![CDATA[Código Cliente]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="5836e3b0-5ade-4258-8079-6bec01f0d0f0" x="291" y="2" width="100" height="20"/>
+				<reportElement uuid="5836e3b0-5ade-4258-8079-6bec01f0d0f0" x="177" y="0" width="100" height="20"/>
 				<textElement/>
 				<text><![CDATA[Nome]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="82976d11-5548-47fe-a760-2f3524693d8a" x="240" y="2" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[RG]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="aeeef288-4da5-4ae4-bc7e-362e636e69c4" x="292" y="0" width="76" height="20"/>
+				<textElement/>
+				<text><![CDATA[CPF]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="8a02d9fe-b4d2-4b95-a9e1-b45116aefbaa" x="368" y="0" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[ Nascimento]]></text>
 			</staticText>
 		</band>
 	</columnHeader>
 	<detail>
 		<band height="20" splitType="Stretch">
 			<textField>
-				<reportElement uuid="f6b5033c-a5fe-49ce-84ce-9703ad1717c2" x="191" y="0" width="68" height="20"/>
+				<reportElement uuid="f6b5033c-a5fe-49ce-84ce-9703ad1717c2" x="91" y="0" width="54" height="20"/>
 				<textElement/>
 				<textFieldExpression><![CDATA[$F{Id}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="601f7d6a-0748-4e00-bba3-c73ac2c6706d" x="291" y="0" width="100" height="20"/>
+				<reportElement uuid="db9e4144-2926-41bb-aaf4-497dd9961909" x="292" y="0" width="48" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{CPF}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="dab49604-dacd-49fa-96f7-251a02fa72fc" x="368" y="0" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{Nascimento}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="601f7d6a-0748-4e00-bba3-c73ac2c6706d" x="177" y="0" width="49" height="20"/>
 				<textElement/>
 				<textFieldExpression><![CDATA[$F{Nome}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="c22c5043-4b4e-4101-bc82-1f275999df2a" x="240" y="0" width="37" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{RG}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>
 	<columnFooter>
-		<band height="45" splitType="Stretch"/>
+		<band height="45" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="ada31557-cf2c-4ebc-8e94-323652b2a625" x="330" y="20" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[SomaID:]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="a476c34f-a70a-43dd-bfdd-4bbead5734f1" x="386" y="25" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$V{Somatorio}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="75c7b233-64d9-4a90-b08b-dbd7fcd4522a" x="91" y="25" width="41" height="20"/>
+				<textElement/>
+				<text><![CDATA[Pagina ]]></text>
+			</staticText>
+			<textField evaluationTime="Report">
+				<reportElement uuid="ded04618-fc4e-4b8e-8272-be5945b80d7e" x="145" y="25" width="32" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
 	</columnFooter>
 	<pageFooter>
 		<band height="54" splitType="Stretch"/>
