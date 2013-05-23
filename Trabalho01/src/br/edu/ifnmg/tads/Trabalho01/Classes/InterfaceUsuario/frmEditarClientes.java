@@ -25,7 +25,7 @@ public class frmEditarClientes extends javax.swing.JInternalFrame {
     /**
      * Creates new form frmEditarClientes
      */
-    public frmEditarClientes(DAOClientes d, Cliente c) {
+    public frmEditarClientes( Cliente c,DAOClientes d) {
         initComponents();
         this.clientes = c;
         this.dao = d;
@@ -45,20 +45,17 @@ public static Date formataData(String data) throws Exception {
         return date;  
     }
 
-    frmEditarClientes(Cliente c, DAOClientes dao) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
     
+   
 
 
     
     
 private void carregaCampos() {
-        
+        lblid.setText(Integer.toString(clientes.getId()));
         txtNome.setText(clientes.getNome());
-        txtRG.setText(clientes.getNome());
-        txtCPF.setText(clientes.getNome());
+        txtRG.setText(clientes.getCpf());
+        txtCPF.setText(clientes.getRg());
         
         Date sqlDate = clientes.getNascimento();    
         String date = new SimpleDateFormat("dd/MM/yyyy").format(new java.util.Date(sqlDate.getTime()));   
@@ -68,7 +65,7 @@ private void carregaCampos() {
     }
 
     private void carregaObjeto() {
-       
+       // clientes.setId(Integer.parseInt(lblid.getText()));
         clientes.setNome(txtNome.getText());
         clientes.setRg(txtNome.getText());
         clientes.setCpf(txtNome.getText());
@@ -102,6 +99,7 @@ private void carregaCampos() {
         btnSalvar = new javax.swing.JButton();
         btnLimpar = new javax.swing.JButton();
         btnApagar = new javax.swing.JButton();
+        lblid = new javax.swing.JLabel();
         jPanel7 = new javax.swing.JPanel();
         lblEndereco = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
@@ -186,7 +184,10 @@ private void carregaCampos() {
                         .addGroup(lblCPFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtRG, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(lblCPFLayout.createSequentialGroup()
+                                .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(32, 32, 32)
+                                .addComponent(lblid))
                             .addComponent(txtDataNasci, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(lblCPFLayout.createSequentialGroup()
                         .addGap(51, 51, 51)
@@ -195,7 +196,7 @@ private void carregaCampos() {
                         .addComponent(btnLimpar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnApagar)))
-                .addContainerGap(102, Short.MAX_VALUE))
+                .addContainerGap(70, Short.MAX_VALUE))
         );
         lblCPFLayout.setVerticalGroup(
             lblCPFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -203,7 +204,8 @@ private void carregaCampos() {
                 .addGap(15, 15, 15)
                 .addGroup(lblCPFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblNome, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblid))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(lblCPFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtRG, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -391,7 +393,7 @@ private void carregaCampos() {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jTabbedPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addContainerGap(31, Short.MAX_VALUE))
         );
 
         pack();
@@ -407,19 +409,20 @@ private void carregaCampos() {
             if (JOptionPane.showConfirmDialog(rootPane, "Deseja Salvar?") == 0) {
 
                 carregaObjeto();
-                Cliente cliente2 = new Cliente();
-                cliente2.setNome(txtNome.getText());
-                cliente2.setCpf(txtCPF.getText());
-                cliente2.setRg(txtRG.getText());
+                Cliente clientes2 = new Cliente();
+                clientes2.setId(Integer.parseInt(lblid.getText()));
+                clientes2.setNome(txtNome.getText());
+                clientes2.setCpf(txtCPF.getText());
+                clientes2.setRg(txtRG.getText());
                Date test = null;
                 try {    
                     test = formataData(txtDataNasci.getText());
                 } catch (Exception ex) {
                     Logger.getLogger(frmCadastrarCliente.class.getName()).log(Level.SEVERE, null, ex);
                 }
-            cliente2.setNascimento(test);
-            //DAOCliente dao = new DAOCliente();
-            dao.Salvar(cliente2);
+            clientes2.setNascimento(test);
+            //DAOClientes dao = new DAOClientes();
+            dao.Salvar(clientes2);
              
                     
                     JOptionPane.showMessageDialog(rootPane, "Cliente alterado com sucesso!");
@@ -463,6 +466,7 @@ private void carregaCampos() {
     private javax.swing.JLabel lblNumero;
     private javax.swing.JLabel lblRG;
     private javax.swing.JLabel lblRua;
+    private javax.swing.JLabel lblid;
     private javax.swing.JTextField txtBairro;
     private javax.swing.JTextField txtCEP;
     private javax.swing.JTextField txtCPF;
